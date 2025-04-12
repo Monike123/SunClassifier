@@ -25,7 +25,7 @@ The backend uses a **Voting Classifier** composed of several base models (like D
 
 > 📸 A display image will be added here.
 
-*(Generating the image now...)*
+*![ChatGPT Image Apr 13, 2025, 01_07_56 AM](https://github.com/user-attachments/assets/3e96f303-a1fc-437d-bc89-68bf0d424c1d)*
 
 ---
 
