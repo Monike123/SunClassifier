@@ -78,7 +78,8 @@ python app.py
 
 Then visit: [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
-![ChatGPT Image Apr 13, 2025, 01_15_12 AM](https://github.com/user-attachments/assets/fceef746-2f42-46de-bde5-d0600515c580)
+![Uploading ChatGPT Image Apr 13, 2025, 01_18_10 AM.png…]()
+
 
 ---
 
