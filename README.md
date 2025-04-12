@@ -1,61 +1,75 @@
-🛰️ Star Classifier: Predict Stellar Types from Astronomical Data
-Star Classifier is an interactive web application built using Flask that allows users to predict the type of a star based on its astronomical properties such as temperature, luminosity, radius, magnitude, color, and spectral class.
+Awesome! Here's a full professional `README.md` for your **Star Classifier** project, complete with:
+
+- 🌟 Description  
+- 🛠 Installation & Usage  
+- 📸 Project Preview (we'll generate an image too)  
+- 📁 File Structure  
+- 📜 Tech Stack  
+- 🤝 Contributing  
+- 🪐 License
+
+---
+
+## 🛰️ Star Classifier: Predict Stellar Types from Astronomical Data
+
+**Star Classifier** is an interactive web application built using Flask that allows users to predict the type of a star based on its astronomical properties such as temperature, luminosity, radius, magnitude, color, and spectral class.
 
 The model is trained to classify stars into one of six categories:
-
-🌑 Brown Dwarf
-
-🔴 Red Dwarf
-
-⚪ White Dwarf
-
-☀️ Main Sequence
-
-🌟 Supergiant
-
-💥 Hypergiant
+- 🌑 Brown Dwarf  
+- 🔴 Red Dwarf  
+- ⚪ White Dwarf  
+- ☀️ Main Sequence  
+- 🌟 Supergiant  
+- 💥 Hypergiant  
 
 Each prediction is accompanied by an informative description, fun facts, and a dynamically displayed animation-style video to help users visualize the star type!
 
-🧠 Machine Learning Model
-The backend uses a Voting Classifier composed of several base models (like Decision Trees, KNN, and Random Forests). The model is trained on a balanced dataset with features encoded to match the trained environment.
+---
 
-🌌 Preview
-📸 A display image will be added here.
+## 🧠 Machine Learning Model
 
-(Generating the image now...)
+The backend uses a **Voting Classifier** composed of several base models (like Decision Trees, KNN, and Random Forests). The model is trained on a balanced dataset with features encoded to match the trained environment.
 
-⚙️ Installation & Setup
-🔧 Requirements
-Python 3.7+
+---
 
-Flask
+## 🌌 Preview
 
-NumPy
+> 📸 A display image will be added here.
 
-Scikit-learn
+*(Generating the image now...)*
 
-Pickle
+---
 
-💻 Clone the Repository
-bash
-Copy
-Edit
+## ⚙️ Installation & Setup
+
+### 🔧 Requirements
+
+- Python 3.7+
+- Flask
+- NumPy
+- Scikit-learn
+- Pickle
+
+### 💻 Clone the Repository
+
+```bash
 git clone https://github.com/your-username/star-classifier.git
 cd star-classifier
-📦 Install Dependencies
+```
+
+### 📦 Install Dependencies
+
 We recommend using a virtual environment:
 
-bash
-Copy
-Edit
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-📂 Project Structure
-php
-Copy
-Edit
+```
+
+### 📂 Project Structure
+
+```
 star-classifier/
 │
 ├── static/
@@ -68,47 +82,50 @@ star-classifier/
 ├── app.py                    # Flask backend
 ├── README.md                 # This file
 └── requirements.txt          # Python dependencies
-🚀 Run the Application
-bash
-Copy
-Edit
+```
+
+### 🚀 Run the Application
+
+```bash
 python app.py
-Then visit: http://127.0.0.1:5000 in your browser.
+```
 
-🖼️ Video Assets
-Place your video files inside the static/videos/ folder, with filenames exactly matching the star prediction labels:
+Then visit: [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
-Brown_Dwarf.mp4
+---
 
-Red_Dwarf.mp4
+## 🖼️ Video Assets
 
-White_Dwarf.mp4
+Place your video files inside the `static/videos/` folder, with filenames exactly matching the star prediction labels:
 
-Main_Sequence.mp4
+- `Brown_Dwarf.mp4`
+- `Red_Dwarf.mp4`
+- `White_Dwarf.mp4`
+- `Main_Sequence.mp4`
+- `Super_Giants.mp4`
+- `Hyper_Giants.mp4`
 
-Super_Giants.mp4
+---
 
-Hyper_Giants.mp4
+## 💻 Tech Stack
 
-💻 Tech Stack
-Frontend: HTML5, JavaScript, CSS (Canvas animations)
+- **Frontend:** HTML5, JavaScript, CSS (Canvas animations)
+- **Backend:** Python, Flask
+- **ML Libraries:** scikit-learn, NumPy
+- **Visualization:** HTML5 Video & JSON-driven UI updates
 
-Backend: Python, Flask
+---
 
-ML Libraries: scikit-learn, NumPy
+## 🤝 Contributing
 
-Visualization: HTML5 Video & JSON-driven UI updates
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -am 'Add feature'`)
+4. Push to the branch (`git push origin feature-name`)
+5. Create a Pull Request
 
-🤝 Contributing
-Fork this repository
+---
 
-Create a new branch (git checkout -b feature-name)
+## 📄 License
 
-Commit your changes (git commit -am 'Add feature')
-
-Push to the branch (git push origin feature-name)
-
-Create a Pull Request
-
-📄 License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
