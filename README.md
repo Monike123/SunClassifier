@@ -1,4 +1,5 @@
 # 🛰️ Star Classifier: Predict Stellar Types from Astronomical Data
+![ChatGPT Image Apr 13, 2025, 01_07_56 AM](https://github.com/user-attachments/assets/6e42e702-8c5d-4d69-9e33-3bbd1dcbf30f)
 
 **Star Classifier** is an interactive web application built using Flask that allows users to predict the type of a star based on its astronomical properties such as temperature, luminosity, radius, magnitude, color, and spectral class.
 
