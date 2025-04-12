@@ -1,16 +1,4 @@
-Awesome! Here's a full professional `README.md` for your **Star Classifier** project, complete with:
-
-- 🌟 Description  
-- 🛠 Installation & Usage  
-- 📸 Project Preview (we'll generate an image too)  
-- 📁 File Structure  
-- 📜 Tech Stack  
-- 🤝 Contributing  
-- 🪐 License
-
----
-
-## 🛰️ Star Classifier: Predict Stellar Types from Astronomical Data
+# 🛰️ Star Classifier: Predict Stellar Types from Astronomical Data
 
 **Star Classifier** is an interactive web application built using Flask that allows users to predict the type of a star based on its astronomical properties such as temperature, luminosity, radius, magnitude, color, and spectral class.
 
