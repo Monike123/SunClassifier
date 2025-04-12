@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Classifier - Star Type Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <canvas id="spaceCanvas" class="space-canvas"></canvas>
+    
+    <div class="container">
+        <div class="content-wrapper">
+            <h1 class="title">Cosmic <span class="gradient-text">Classifier</span></h1>
+            <p class="subtitle">Predict star types using stellar parameters</p>
+            
+            <div class="card animate-float">
+                <div class="card-header">
+                    <h2 class="card-title">Star Type Prediction</h2>
+                    <p class="card-description">Enter the stellar parameters to classify the star</p>
+                </div>
+                
+                <div class="card-content">
+                    <form id="predictionForm" class="prediction-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="temperature" class="form-label">Temperature (K)</label>
+                                <input type="number" id="temperature" class="form-input" placeholder="e.g., 5778" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="luminosity" class="form-label">Luminosity (L☉)</label>
+                                <input type="number" id="luminosity" step="0.00001" class="form-input" placeholder="e.g., 1.0" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="radius" class="form-label">Radius (R☉)</label>
+                                <input type="number" id="radius" step="0.00001" class="form-input" placeholder="e.g., 1.0" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="magnitude" class="form-label">Absolute Magnitude</label>
+                                <input type="number" id="magnitude" step="0.00001" class="form-input" placeholder="e.g., 4.8" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="starColor" class="form-label">Star Color</label>
+                                <select id="starColor" class="form-select" required>
+                                    <option value="">Select color</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="White">White</option>
+                                    <option value="Yellow">Yellow</option>
+                                    <option value="Yellow-Orange">Yellow-Orange</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="spectralClass" class="form-label">Spectral Class</label>
+                                <select id="spectralClass" class="form-select" required>
+                                    <option value="">Select class</option>
+                                    <option value="O">O - Blue</option>
+                                    <option value="B">B - Blue-white</option>
+                                    <option value="A">A - White</option>
+                                    <option value="F">F - Yellow-white</option>
+                                    <option value="G">G - Yellow</option>
+                                    <option value="K">K - Orange</option>
+                                    <option value="M">M - Red</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- New model selection section -->
+                        <div class="model-selection">
+                            <h3 class="model-selection-title">Select Prediction Model</h3>
+                            <div class="model-options">
+                                <div class="model-option">
+                                    <input type="radio" id="voting_classifier" name="modelType" value="voting_classifier" checked>
+                                    <label for="voting_classifier">
+                                        <div class="model-card">
+                                            <div class="model-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="model-info">
+                                                <h4>Voting Classifier</h4>
+                                                <p>Combines multiple models for improved accuracy</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="model-option">
+                                    <input type="radio" id="random_forest" name="modelType" value="random_forest">
+                                    <label for="random_forest">
+                                        <div class="model-card">
+                                            <div class="model-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="9" cy="7" r="4"></circle>
+                                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="model-info">
+                                                <h4>Random Forest</h4>
+                                                <p>Ensemble learning method using decision trees</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <div class="button-shine"></div>
+                            <div class="button-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="sparkle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path>
+                                </svg>
+                                <span id="submitText">Predict Star Type</span>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card-footer">
+                    <div id="resultContainer" class="result-container" style="display: none;">
+                        <h3 class="result-title">Predicted Star Type:</h3>
+                        <div id="prediction" class="prediction-result"></div>
+                        <div id="modelUsed" class="model-used"></div>
+                        
+                        <!-- Star info section -->
+                        <div id="starInfo" class="star-info">
+                            <div class="star-media">
+                                <div class="video-container">
+                                    <video id="starVideo" controls>
+                                        <source src="" type="video/mp4">
+                                        Your browser does not support the video element.
+                                    </video>
+                                </div>
+                            </div>
+                            
+                            <div class="star-description">
+                                <p id="starDescription"></p>
+                            </div>
+                            
+                            <div class="hr-diagrams">
+                                <div class="diagram-container">
+                                    <h4>Hertzsprung-Russell Diagram</h4>
+                                    <img src="/static/1.jpg" alt="HR Diagram" class="hr-diagram">
+                                </div>
+                                <div class="diagram-container">
+                                    <h4>Star Classification</h4>
+                                    <img src="/static/2.1.png" alt="Star Classification" class="hr-diagram">
+                                </div>
+                            </div>
+                            
+                            <div class="star-facts">
+                                <h4>Key Characteristics</h4>
+                                <ul id="starFacts" class="facts-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="errorContainer" class="error-container" style="display: none;">
+                        <h3 class="error-title">Error:</h3>
+                        <div id="errorMessage" class="error-message"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Model comparison information -->
+            <div class="model-info-section">
+                <h2 class="model-info-title">About Our Prediction Models</h2>
+                <div class="model-info-cards">
+                    <div class="model-info-card">
+                        <h3>Voting Classifier</h3>
+                        <p>The Voting Classifier combines multiple machine learning algorithms to improve prediction accuracy. It works by taking the majority vote from several individual models, reducing the risk of errors from any single model.</p>
+                        <h4>Best for:</h4>
+                        <ul>
+                            <li>Higher accuracy predictions</li>
+                            <li>Reducing overfitting</li>
+                            <li>More stable results across different datasets</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="model-info-card">
+                        <h3>Random Forest</h3>
+                        <p>Random Forest is an ensemble learning method that builds multiple decision trees during training and outputs the class that is the mode of the classes of the individual trees. It's known for its accuracy and ability to handle large datasets.</p>
+                        <h4>Best for:</h4>
+                        <ul>
+                            <li>Handling complex feature relationships</li>
+                            <li>Providing feature importance rankings</li>
+                            <li>Balancing bias and variance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
