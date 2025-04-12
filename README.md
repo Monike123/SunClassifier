@@ -105,6 +105,11 @@ Place your video files inside the `static/videos/` folder, with filenames exactl
 - **Visualization:** HTML5 Video & JSON-driven UI updates
 
 ---
+## 🤝 Example Usage 
+
+
+https://github.com/user-attachments/assets/53273657-011b-4d5e-acdb-1859fd6426a4
+
 
 ## 🤝 Contributing
 
